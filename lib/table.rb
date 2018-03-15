@@ -34,14 +34,14 @@ class Table
 end
 
 
-
+=begin
 t = Table.new
 t.print_table
 print "Koga micemo:"
 who = gets.chomp
 t.move who, "nesto"
 t.print_table
-=begin
+
 t.state[:B][0] = nil
 gets
 t.state[:D][0] = "\u265F"
