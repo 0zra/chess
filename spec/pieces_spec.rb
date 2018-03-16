@@ -20,8 +20,8 @@ describe "Pieces" do
   context "Testing pawn method" do
 
     it "should return [C3,C4,C5]" do
-      @state[:C][3] = "\u2658"
-      @state[:C][5] = "\u2655"
+      @state[:C][2] = "\u2658"
+      @state[:C][4] = "\u2655"
       expect(pawn "B4",@state).to eq (["C4","C5","C3"])
     end
     it "should return []" do
@@ -40,5 +40,6 @@ describe "Pieces" do
     it "should return false for B9" do
       expect(is_ok? "B9").to eq(false)
     end
+
   end
 end

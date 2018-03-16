@@ -17,8 +17,9 @@ end
 def is_ok? adress
   r = adress[0].to_sym
   c = adress[1].to_i
+  c -= 1
   return false if r < :A || r>:H
-  return false if c <1 || c > 8
+  return false if c <0 || c > 7
   return true
 end
 
@@ -26,18 +27,19 @@ end
  def pawn adress, board
    r = adress[0].to_sym
    c = adress[1].to_i
+   c-=1
    possible_moves = []
    helper = piece board[r][c]
    color = helper[1]
    if color == "white"
-     possible_moves<< r.plus.to_s + c.to_s if board[r.plus][c] ==nil
+     possible_moves<< r.plus.to_s + (c+1).to_s if board[r.plus][c] ==nil
       if board[r.plus][c+1] != nil && (piece board[r.plus][c+1])[1] == "black"
-        helper = r.plus.to_s + (c+1).to_s
+        helper = r.plus.to_s + (c+2).to_s
         possible_moves<< helper if is_ok? helper
       end
       if board[r.plus][c-1] != nil && (piece board[r.plus][c-1])[1] == "black"
-        helper = r.plus.to_s + (c-1).to_s
-         possible_moves<< r.plus.to_s + (c-1).to_s if is_ok? helper
+        helper = r.plus.to_s + (c).to_s
+         possible_moves<< helper if is_ok? helper
       end
    else
    end
