@@ -17,7 +17,7 @@ describe "Pieces" do
     expect(piece "\u265E").to eq(["knight", "white"])
   end
 
-  context "Testing pawn method" do
+  context "Testing pawn method for whites" do
 
     it "should return [C3,C4,C5]" do
       @state[:C][2] = "\u2658"
@@ -25,7 +25,21 @@ describe "Pieces" do
       expect(pawn "B4",@state).to eq (["C4","C5","C3"])
     end
     it "should return []" do
-      expect(pawn "H3", @state).to eq([])
+      expect(pawn "H3", @state).to eq([]) #at the time there was no option for black pieces + it is blocked by the G columnt
+    end
+
+  end
+  context "Testing pawn method for blacks" do
+    it "should return F3" do
+      expect(pawn "G3", @state).to eq(["F3"])
+    end
+    it "should be B4 and B6" do
+      @state[:C][4] = "\u2659"
+      expect(pawn "C5", @state).to eq(["B6","B4"])
+    end
+    it "should be B3,B4 and B6" do
+      @state[:B][4] = nil
+      expect(pawn "C5", @state).to eq(["B5","B6","B4"])
     end
 
   end

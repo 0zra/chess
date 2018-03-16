@@ -32,7 +32,7 @@ end
    helper = piece board[r][c]
    color = helper[1]
    if color == "white"
-     possible_moves<< r.plus.to_s + (c+1).to_s if board[r.plus][c] ==nil
+     possible_moves<< r.plus.to_s + (c+1).to_s if board[r.plus][c] ==nil && (is_ok? r.plus.to_s + (c+1).to_s)
       if board[r.plus][c+1] != nil && (piece board[r.plus][c+1])[1] == "black"
         helper = r.plus.to_s + (c+2).to_s
         possible_moves<< helper if is_ok? helper
@@ -41,7 +41,16 @@ end
         helper = r.plus.to_s + (c).to_s
          possible_moves<< helper if is_ok? helper
       end
-   else
-   end
+    elsif color == "black"
+      possible_moves << r.minus.to_s + (c+1).to_s if board[r.minus][c] ==nil && (is_ok? "#{r.minus}#{c+1}")
+      if board[r.minus][c+1] != nil && (piece board[r.minus][c+1])[1] == "white"
+        helper = r.minus.to_s + (c+2).to_s
+        possible_moves<< helper if is_ok? helper
+      end
+      if board[r.minus][c-1] != nil && (piece board[r.minus][c-1])[1] == "white"
+        helper = r.minus.to_s + (c).to_s
+         possible_moves<< helper if is_ok? helper
+      end
+    end
    return possible_moves
  end
