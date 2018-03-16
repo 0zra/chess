@@ -1,13 +1,13 @@
 require 'helper'
 
 describe "Test if our extension to the class Symbol works" do
-  it "should return :B" do
+  it "A.plus should return :B" do
     expect(:A.plus).to eq(:B)
   end
-  it "should return :H" do
+  it "G.plus should return :H" do
     expect(:G.plus).to eq(:H)
   end
-  it "should return :B" do
+  it "C.minus should return :B" do
     expect(:C.minus).to eq(:B)
   end
 end

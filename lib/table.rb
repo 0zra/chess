@@ -29,7 +29,11 @@ class Table
   def move from, to
     rf = from[0]
     cf = from[1].to_i
+    helper = @state[rf.to_sym][cf-1]
     @state[rf.to_sym][cf-1] = nil
+    rf = to[0]
+    cf = to[1].to_i
+    @state[rf.to_sym][cf-1] = helper
   end
 end
 
