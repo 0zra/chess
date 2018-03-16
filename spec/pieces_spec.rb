@@ -24,6 +24,21 @@ describe "Pieces" do
       @state[:C][5] = "\u2655"
       expect(pawn "B4",@state).to eq (["C4","C5","C3"])
     end
+    it "should return []" do
+      expect(pawn "H3", @state).to eq([])
+    end
 
+  end
+
+  context "Testing if coordinats are ok" do
+    it "should return true for D4" do
+      expect(is_ok? "D4").to eq(true)
+    end
+    it "should return false for I6" do
+      expect(is_ok? "I6").to eq(false)
+    end
+    it "should return false for B9" do
+      expect(is_ok? "B9").to eq(false)
+    end
   end
 end
