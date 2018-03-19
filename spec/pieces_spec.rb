@@ -69,6 +69,22 @@ describe "Pieces" do
     end
   end
 
+  context "Testing knight method" do
+    it "should return all 8 options" do
+      @state[:C][3] = "\u2658"
+#      @state[:D][5] = "\u2655"
+      expect(knight("C4", @state)).to eq(["D6","D2","E5","E3","B6","B2","A5","A3"])
+    end
+    it "should return 4 options" do
+      @state[:F][5] = "\u2658"
+      expect(knight("F6", @state)).to eq(["E8","E4","D7","D5"])
+    end
+    it "should return just 1 option" do
+      @state[:H][0] = "\u2658"
+      expect(knight("H1",@state)).to eq(["F2"])
+    end
+  end
+
 
 
 end

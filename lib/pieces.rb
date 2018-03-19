@@ -66,3 +66,39 @@ end
    return possible_moves
    # dodaj prvi potez i en passan
  end
+
+def knight adress, board
+  r = adress[0].to_sym
+  c = adress[1].to_i
+  c -= 1
+  possible_moves = []
+  helper = piece board[r][c]
+  color = helper[1]
+  if is_ok? (r.plus.to_s + (c+2).to_s)
+    possible_moves<<r.plus.to_s + (c+3).to_s if !is_occupied_by_friend?(board[r.plus][c+2],color)
+  end
+  if is_ok? (r.plus.to_s + (c-2).to_s)
+    possible_moves<<r.plus.to_s + (c-1).to_s if !is_occupied_by_friend?(board[r.plus][c-2],color)
+  end
+  if is_ok? (r.plus.plus.to_s + (c+1).to_s)
+    possible_moves<<r.plus.plus.to_s + (c+2).to_s if !is_occupied_by_friend?(board[r.plus.plus][c+1],color)
+  end
+  if is_ok? (r.plus.plus.to_s + (c-1).to_s)
+    possible_moves<<r.plus.plus.to_s + (c).to_s if !is_occupied_by_friend?(board[r.plus.plus][c-1],color)
+  end
+  if is_ok? (r.minus.to_s + (c+2).to_s)
+    possible_moves<<r.minus.to_s + (c+3).to_s if !is_occupied_by_friend?(board[r.minus][c+2],color)
+  end
+  if is_ok? (r.minus.to_s + (c-2).to_s)
+    possible_moves<<r.minus.to_s + (c-1).to_s if !is_occupied_by_friend?(board[r.minus][c-2],color)
+  end
+#
+  if is_ok? (r.minus.minus.to_s + (c+1).to_s)
+    possible_moves<<r.minus.minus.to_s + (c+2).to_s if !is_occupied_by_friend?(board[r.minus.minus][c+1],color)
+  end
+  if is_ok? (r.minus.minus.to_s + (c-1).to_s)
+    possible_moves<<r.minus.minus.to_s + (c).to_s if !is_occupied_by_friend?(board[r.minus.minus][c-1],color)
+  end
+
+  return possible_moves
+end
