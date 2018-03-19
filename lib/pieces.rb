@@ -320,3 +320,18 @@ def king_basic adress,board
   end
   return possible_moves
 end
+
+def is_legal? from,to,board
+  r = from[0].to_sym
+  c = from[1].to_i
+  c-=1
+  figurine = piece board[r][c]
+  options = pawn(from,board) if figurine[0] == "pawn"
+  options = knight(from,board) if figurine[0] == "knight"
+  options = rook(from,board) if figurine[0] == "rook"
+  options = bishop(from,board) if figurine[0] == "bishop"
+  options = queen(from,board) if figurine[0] == "queen"
+  options = king_basic(from,board) if figurine[0] == "king"
+  return true if options.include?(to)
+  return false
+end

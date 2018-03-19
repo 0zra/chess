@@ -153,4 +153,13 @@ describe "Pieces" do
     end
   end
 
+  context "testing is_legal? method" do
+    it "should return true" do
+      expect(is_legal?("H2","F3",@state)).to eq(true)
+    end
+    it "should return false" do
+      expect(is_legal?("B5","C4",@state)).to eq(false)
+    end
+  end
+
 end
