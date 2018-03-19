@@ -56,7 +56,7 @@ describe "Pieces" do
     it "should return false for B9" do
       expect(is_ok? "B9").to eq(false)
     end
-    it "should return true for E10" do
+    it "should return false for E10" do
       expect(is_ok? "E10").to eq(false)
     end
 
@@ -109,6 +109,25 @@ describe "Pieces" do
     end
     it "should return []" do
       expect(rook("A1",@state)).to eq([])
+    end
+  end
+
+  context "testing bishop method" do
+    it "should return diagonal D2-F4" do
+      @state[:C][0] = "\u2657"
+      expect(bishop("C1",@state)).to eq(["D2","E3","F4","B2"])
+    end
+    it "should return diagonal D2-G5" do
+      @state[:C][0] = "\u265D"
+      expect(bishop("C1",@state)).to eq(["D2","E3","F4","G5"])
+    end
+    it "should return 8 options" do
+      @state[:E][3] = "\u2657"
+      expect(bishop("E4",@state)).to eq(["F5","D5","C6","B7","F3","D3","C2","B1"])
+    end
+    it "should return 8options" do
+      @state[:E][3] = "\u265D"
+      expect(bishop("E4",@state)).to eq(["F5","G6","D5","C6","F3","G2","D3","C2"])
     end
   end
 
