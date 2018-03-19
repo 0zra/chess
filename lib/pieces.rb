@@ -30,7 +30,7 @@ def is_ok? adress
   c = adress[1].to_i
   c -= 1
   return false if r < :A || r>:H
-  return false if c <0 || c > 7
+  return false if c <0 || c >= 7
   return true
 end
 

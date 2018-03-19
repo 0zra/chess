@@ -83,6 +83,14 @@ describe "Pieces" do
       @state[:H][0] = "\u2658"
       expect(knight("H1",@state)).to eq(["F2"])
     end
+    it "should return 4 options" do
+      @state[:F][7] = "\u265E"
+      expect(knight("F8",@state)).to eq(["G6","H7","E6","D7"])
+    end
+    it "should return 4 options" do
+      @state[:F][6] = "\u265E"
+      expect(knight("F7",@state)).to eq(["G5", "H8", "H6", "E5", "D8", "D6"])
+    end
   end
 
 
