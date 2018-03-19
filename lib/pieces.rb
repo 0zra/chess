@@ -13,7 +13,18 @@ def piece location
   return ["rook","white"] if location == "\u265C"
   return ["pawn","white"] if location == "\u265F"
 end
-
+def is_occupied_by_enemy? poz, color
+  helper =  piece poz
+  return false if helper == nil
+  return true if helper[1] != color
+  return false
+end
+def is_occupied_by_friend? poz, color
+  helper =  piece poz
+  return false if helper == nil
+  return true if helper[1] == color
+  return false
+end
 def is_ok? adress
   r = adress[0].to_sym
   c = adress[1].to_i
@@ -53,4 +64,5 @@ end
       end
     end
    return possible_moves
+   # dodaj prvi potez i en passan
  end

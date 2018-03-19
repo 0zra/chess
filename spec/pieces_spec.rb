@@ -56,4 +56,19 @@ describe "Pieces" do
     end
 
   end
+
+  context "Testing if is_occupied_by_enemy works as it should" do
+    it "should return true" do
+      expect(is_occupied_by_enemy? @state[:G][2], "white").to eq(true)
+    end
+    it "should return false" do
+      expect(is_occupied_by_enemy? @state[:G][2], "black").to eq(false)
+    end
+    it "should return false" do
+      expect(is_occupied_by_enemy? @state[:D][5], "black").to eq(false)
+    end
+  end
+
+
+
 end
