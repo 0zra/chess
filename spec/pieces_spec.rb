@@ -2,7 +2,7 @@ require 'pieces'
 
 describe "Pieces" do
 
-  before(:all) do
+  before(:each) do
     @state = Hash.new(Array.new(8, nil))
     (:A..:H).each do |letter|
       @state[letter] = Array.new(8, nil)
@@ -35,9 +35,11 @@ describe "Pieces" do
     end
     it "should be B4 and B6" do
       @state[:C][4] = "\u2659"
+
       expect(pawn "C5", @state).to eq(["B6","B4"])
     end
     it "should be B3,B4 and B6" do
+      @state[:C][4] = "\u2659"
       @state[:B][4] = nil
       expect(pawn "C5", @state).to eq(["B5","B6","B4"])
     end
@@ -53,6 +55,9 @@ describe "Pieces" do
     end
     it "should return false for B9" do
       expect(is_ok? "B9").to eq(false)
+    end
+    it "should return true for E10" do
+      expect(is_ok? "E10").to eq(false)
     end
 
   end
@@ -90,6 +95,20 @@ describe "Pieces" do
     it "should return 4 options" do
       @state[:F][6] = "\u265E"
       expect(knight("F7",@state)).to eq(["G5", "H8", "H6", "E5", "D8", "D6"])
+    end
+  end
+
+  context "testing rook method" do
+    it "should return E1-B1 and F2-F8" do
+      @state[:F][0] = "\u2655"
+      expect(rook("F1",@state)).to eq(["E1","D1","C1","B1","F2","F3","F4","F5","F6","F7","F8"])
+    end
+    it "should return C5-G5 except D5" do
+      @state[:D][4] = "\u265C"
+      expect(rook("D5",@state)).to eq(["C5", "E5", "F5", "G5", "D6", "D7", "D8","D4","D3","D2","D1"])
+    end
+    it "should return []" do
+      expect(rook("A1",@state)).to eq([])
     end
   end
 
