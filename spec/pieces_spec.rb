@@ -131,6 +131,26 @@ describe "Pieces" do
     end
   end
 
+  context "testing queen method" do
+    it "should return 15 results" do
+      @state[:D][7] = "\u265B"
+      expect(queen("D8",@state)).to eq(["C8", "E8", "F8", "G8", "D7", "D6", "D5", "D4", "D3", "D2", "D1", "E7", "F6", "G5", "C7"])
+    end
+    it "should return 5 results" do
+      @state[:A][1]= "\u2654"
+      expect(queen("A2",@state)).to eq(["B2","A3","A1","B3","B1"])
+    end
+  end
 
+  context "testing king method" do
+    it "should return 8 options" do
+      @state[:F][1] = "\u265A"
+      expect(king_basic("F2",@state)).to eq(["F3","F1","G2","G3","G1","E2","E3","E1"])
+    end
+    it "should return 3 options" do
+      @state[:A][7] = "\u2655"
+      expect(king_basic("A8", @state)).to eq(["A7","B8","B7"])
+    end
+  end
 
 end

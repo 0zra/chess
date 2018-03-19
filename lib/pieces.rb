@@ -278,3 +278,45 @@ def bishop adress, board
 
   return possible_moves
 end
+
+def queen adress, board
+  helper1 = rook adress,board
+  helper2= bishop adress,board
+  return helper1+helper2
+end
+
+def king_basic adress,board
+  r = adress[0].to_sym
+  c = adress[1].to_i
+  c -= 1
+  possible_moves = []
+  helper = piece board[r][c]
+  color = helper[1]
+  if is_ok?(r.to_s + (c+2).to_s) && !is_occupied_by_friend?(board[r][c+1],color)
+    possible_moves<<r.to_s + (c+2).to_s
+  end
+  if is_ok?(r.to_s + (c).to_s) && !is_occupied_by_friend?(board[r][c-1],color)
+    possible_moves<<r.to_s + (c).to_s
+  end
+  r = r.plus
+  if is_ok?(r.to_s + (c+1).to_s) && !is_occupied_by_friend?(board[r][c],color)
+    possible_moves<<r.to_s + (c+1).to_s
+  end
+  if is_ok?(r.to_s + (c+2).to_s) && !is_occupied_by_friend?(board[r][c+1],color)
+    possible_moves<<r.to_s + (c+2).to_s
+  end
+  if is_ok?(r.to_s + (c).to_s) && !is_occupied_by_friend?(board[r][c-1],color)
+    possible_moves<<r.to_s + (c).to_s
+  end
+  r = r.minus.minus
+  if is_ok?(r.to_s + (c+1).to_s) && !is_occupied_by_friend?(board[r][c],color)
+    possible_moves<<r.to_s + (c+1).to_s
+  end
+  if is_ok?(r.to_s + (c+2).to_s) && !is_occupied_by_friend?(board[r][c+1],color)
+    possible_moves<<r.to_s + (c+2).to_s
+  end
+  if is_ok?(r.to_s + (c).to_s) && !is_occupied_by_friend?(board[r][c-1],color)
+    possible_moves<<r.to_s + (c).to_s
+  end
+  return possible_moves
+end
