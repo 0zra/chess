@@ -71,7 +71,7 @@ end
       end
     end
    return possible_moves
-   # dodaj prvi potez i en passan
+   # dodaj  en passan
  end
 
 def knight adress, board
