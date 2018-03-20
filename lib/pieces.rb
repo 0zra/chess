@@ -1,7 +1,7 @@
 require_relative 'helper'
 def piece location
-  return ["king","black"] if location == "\u2655"
-  return ["queen","black"] if location == "\u2654"
+  return ["king","black"] if location == "\u2654"
+  return ["queen","black"] if location == "\u2655"
   return ["bishop","black"] if location == "\u2657"
   return ["knight","black"] if location =="\u2658"
   return ["rook","black"] if location == "\u2656"
