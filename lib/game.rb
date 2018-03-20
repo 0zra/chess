@@ -1,5 +1,6 @@
 require_relative 'table'
 require_relative 'pieces'
+require 'yaml'
 
 def domain_of color,board #the board , i.e. table.state, not table
   domain = []
@@ -46,6 +47,25 @@ class Player
     return  king_basic("E8",board) -domain_of(@color.switch,board)
   end
 end
+puts %{Ok, let's see
+  I know no one is ever going to play this
+  (and just a handful of people is going to see this code)
+  but just in case that someone is actually this crazy (XD)
+  I'll explaint the basic rules
+
+  Basic rules of chess apply (but not all, see README)
+  to move your piece write the coordinates of the piece you'd
+  like to move and coordinates to which you'd like it to be moved to
+  (is this even grammatically correct - btw sry for awful spelling, atom does not have a spellcheck XD)
+  e.g. 'B2 to D2' will move the white pawn from B2 position to D2 position
+  ! mind the capital letters of the rows (actually it is best to just use caps lock on this one)
+
+  If at any time you'd like to save your game or load a saved game instead of
+  typing coordinates tipe load or save 
+
+  Enjoy! :D
+
+}
 table = Table.new
 table.print_table
 white = Player.new("white")
@@ -54,10 +74,24 @@ player = {"white" => white, "black" => black}
 playing  = "white"
 
 # The game itself
-=begin
+
 while true
   puts "Choose your move (#{player[playing].color})"
   player_move = gets.chomp
+  if player_move.include?("load") || player_move.include?("Load") || player_move.include?("LOAD") #I know I've could have done this more easily with REGEX but didn't feel like it X)
+    load_game = YAML.load(File.read("saves.yaml"))
+    player = load_game[:player]
+    playing = load_game[:playing]
+    table.state = load_game[:table]
+    table.print_table
+
+    next
+  end
+  if player_move.include?("save") || player_move.include?("Save") || player_move.include?("SAVE")
+    save = {playing: playing, player: player, table: table.state}
+    File.open("saves.yaml","w") {|file|  file.write(save.to_yaml)}
+    next
+  end
   from = player_move[0..1]
   to = player_move[-2..-1]
 
@@ -87,4 +121,3 @@ while true
 
   table.print_table
 end
-=end

@@ -1,0 +1,84 @@
+---
+:playing: black
+:player:
+  white: !ruby/object:Player
+    color: white
+    check: false
+    king_location: A5
+  black: !ruby/object:Player
+    color: black
+    check: false
+    king_location: H4
+:table:
+  :A:
+  - "♜"
+  - "♞"
+  - "♝"
+  - "♛"
+  - "♚"
+  - 
+  - "♞"
+  - "♜"
+  :B:
+  - "♟"
+  - "♟"
+  - "♟"
+  - "♟"
+  - "♟"
+  - "♟"
+  - 
+  - "♟"
+  :C:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "♝"
+  :D:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "♟"
+  - 
+  :E:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  :F:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - "♘"
+  - 
+  - 
+  :G:
+  - "♙"
+  - "♙"
+  - "♙"
+  - "♙"
+  - "♙"
+  - "♙"
+  - "♙"
+  - "♙"
+  :H:
+  - "♖"
+  - "♘"
+  - "♗"
+  - "♔"
+  - "♕"
+  - "♗"
+  - 
+  - "♖"
