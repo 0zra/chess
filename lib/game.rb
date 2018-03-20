@@ -23,8 +23,26 @@ def domain_of color,board #the board , i.e. table.state, not table
   return domain.uniq
 end
 
+class Player
+  attr_accessor :color, :king_location, :check
+  def initialize color
+    @color = color
+    @check = false
+    @king_location = "H4" if color == "black"
+    @king_location = "A5" if color == "white"
+  end
+  def is_in_check? board
+    if domain_of(@color.switch,board).include?(@king_location)
+      @check = true
+    else
+      @check = false
+    end
+  end
+end
 table = Table.new
 table.print_table
+white = Player.new("white")
+black = Player.new("black")
 player = "white"
 
 # The game itself
