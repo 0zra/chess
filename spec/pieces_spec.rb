@@ -110,6 +110,11 @@ describe "Pieces" do
     it "should return []" do
       expect(rook("A1",@state)).to eq([])
     end
+    it "let's see" do
+      @state[:G][0]=nil
+      @state[:F][0] = "\u265D"
+      expect(rook("H1",@state)).to eq(["G1","F1"])
+    end
   end
 
   context "testing bishop method" do

@@ -4,7 +4,7 @@ def piece location
   return ["queen","black"] if location == "\u2654"
   return ["bishop","black"] if location == "\u2657"
   return ["knight","black"] if location =="\u2658"
-  return ["rook","black"] if location == "\u2655"
+  return ["rook","black"] if location == "\u2656"
   return ["pawn","black"] if location == "\u2659"
   return ["king","white"] if location == "\u265A"
   return ["queen","white"] if location == "\u265B"
@@ -12,6 +12,7 @@ def piece location
   return ["knight","white"] if location == "\u265E"
   return ["rook","white"] if location == "\u265C"
   return ["pawn","white"] if location == "\u265F"
+  return ["nesto ne valja", "cudno"]
 end
 def is_occupied_by_enemy? poz, color
   helper =  piece poz
@@ -325,7 +326,9 @@ def is_legal? from,to,board
   r = from[0].to_sym
   c = from[1].to_i
   c-=1
+
   figurine = piece board[r][c]
+
   options = pawn(from,board) if figurine[0] == "pawn"
   options = knight(from,board) if figurine[0] == "knight"
   options = rook(from,board) if figurine[0] == "rook"

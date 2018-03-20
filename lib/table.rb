@@ -6,7 +6,7 @@ class Table
     (:A..:H).each do |letter|
       @state[letter] = Array.new(8, nil)
     end
-    @state[:H] = ["\u2655","\u2658","\u2657","\u2654","\u2655","\u2657","\u2658","\u2655"]
+    @state[:H] = ["\u2656","\u2658","\u2657","\u2654","\u2655","\u2657","\u2658","\u2656"]
     @state[:G] = Array.new(8,"\u2659")
     @state[:B] = Array.new(8,"\u265F")
     @state[:A] = ["\u265C","\u265E","\u265D","\u265B","\u265A","\u265D","\u265E","\u265C"]
@@ -38,24 +38,9 @@ class Table
 end
 
 
-=begin
-t = Table.new
-t.print_table
-print "Koga micemo:"
-who = gets.chomp
-t.move who, "nesto"
-t.print_table
-
-t.state[:B][0] = nil
-gets
-t.state[:D][0] = "\u265F"
-t.print_table
-gets
-t.state[:G][1] = nil
-t.state[:E][1] = "\u2659"
-t.print_table
-gets
-t.state[:D][0] = nil
-t.state[:E][1] = "\u265F"
-t.print_table
-=end
+class String
+  def switch
+    return "black" if self == "white"
+    return "white" if self == "black"
+  end
+end
