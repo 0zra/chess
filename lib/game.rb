@@ -38,6 +38,13 @@ class Player
       @check = false
     end
   end
+  def king_relocation to
+    @king_location = to
+  end
+  ###############################################################
+  def king_advace board
+    return  king_basic("E8",board) -domain_of(@color.switch,board)
+  end
 end
 table = Table.new
 table.print_table

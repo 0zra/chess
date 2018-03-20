@@ -46,4 +46,14 @@ describe Player do
       expect(player.is_in_check? @state).to eq(true)
     end
   end
+  context "testing king_advace method" do
+    it "should return just 1 option" do
+      player = Player.new "black"
+      @state[:E][7] = "\u2655"
+      player.king_relocation "E8"
+      @state[:F][0] = "\u265C"
+      @state[:D][0] = "\u265C"
+      expect(player.king_advace(@state)).to eq(["E7"])
+    end
+  end
 end
