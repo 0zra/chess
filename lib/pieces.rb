@@ -15,8 +15,8 @@ def piece location
   return ["nesto ne valja", "cudno"]
 end
 def is_occupied_by_enemy? poz, color
+  return false if poz == nil
   helper =  piece poz
-  return false if helper == nil
   return true if helper[1] != color
   return false
 end
