@@ -13,12 +13,12 @@ describe "the game" do
     @state[:A] = ["\u265C","\u265E","\u265D","\u265B","\u265A","\u265D","\u265E","\u265C"]
   end
   context "testing the domain_of function" do
-    it "should return 6th row" do
-      expect(domain_of "black",@state).to eq(["F1","F2","F3","F4","F5","F6","F7","F8"])
+    it "should return 6th and 7th row" do
+      expect(domain_of "black",@state).to eq(["F1", "E1", "F2", "E2", "F3", "E3", "F4", "E4", "F5", "E5", "F6", "E6", "F7", "E7", "F8", "E8"])
     end
-    it "should retrn 6th row plus 8 options" do
+    it "should retrn 6th and 7th row plus 8 options , minus 2 that overlap" do
       @state[:C][4]= "\u2658"
-      expect(domain_of("black",@state).length).to eq(16)
+      expect(domain_of("black",@state).length).to eq(22)
     end
   end
 end

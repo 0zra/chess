@@ -54,7 +54,7 @@ player = {"white" => white, "black" => black}
 playing  = "white"
 
 # The game itself
-
+=begin
 while true
   puts "Choose your move (#{player[playing].color})"
   player_move = gets.chomp
@@ -87,3 +87,4 @@ while true
 
   table.print_table
 end
+=end
